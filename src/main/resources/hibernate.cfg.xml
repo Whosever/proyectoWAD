@@ -6,10 +6,10 @@
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <!-- JDBC Database connection settings postgres local -->
         <property name="connection.url">
-            jdbc:postgresql://localhost:5432/3CM4
+            jdbc:postgres://nbvsdayccarflw:1ac9b9b6d95dd4c1c8dcc2e55853f2346962bbdcd078b402509a64469847faeb@ec2-34-230-231-71.compute-1.amazonaws.com:5432/d20nlhs27e80os
         </property>
-        <property name="connection.username">postgres</property>
-        <property name="connection.password">n0m3l0</property>
+        <property name="connection.username">nbvsdayccarflw</property>
+        <property name="connection.password">1ac9b9b6d95dd4c1c8dcc2e55853f2346962bbdcd078b402509a64469847faeb</property>
         
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">1</property>
@@ -27,6 +27,11 @@
         <property name="hibernate.dbcp.maxIdle">10</property>
         <property name="hibernate.dbcp.minIdle">5</property>
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
+        
+        <mapping class="com.ipn.mx.modelo.entidades.Usuario"/>
+        <mapping class="com.ipn.mx.modelo.entidades.Municipio"/>
+        <mapping class="com.ipn.mx.modelo.entidades.Estado"/>
+        <mapping class="com.ipn.mx.modelo.entidades.Transacciones"/>
 
     </session-factory>
 </hibernate-configuration>
