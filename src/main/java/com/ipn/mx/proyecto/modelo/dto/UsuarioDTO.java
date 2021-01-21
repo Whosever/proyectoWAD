@@ -5,7 +5,7 @@
  */
 package com.ipn.mx.proyecto.modelo.dto;
 
-import com.ipn.mx.proyecto.modelo.entidades.Usuario;
+import com.ipn.mx.proyecto.modelo.entidades.Usuarios;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,10 +17,10 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class UsuarioDTO implements Serializable{
-    Usuario entidad;
+    Usuarios entidad;
 
     public UsuarioDTO() {
-        entidad = new Usuario();
+        entidad = new Usuarios();
     }
     
 }

@@ -6,7 +6,7 @@
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <!-- JDBC Database connection settings postgres local -->
         <property name="connection.url">
-            jdbc:postgres://nbvsdayccarflw:1ac9b9b6d95dd4c1c8dcc2e55853f2346962bbdcd078b402509a64469847faeb@ec2-34-230-231-71.compute-1.amazonaws.com:5432/d20nlhs27e80os
+            jdbc:postgresql://ec2-34-230-231-71.compute-1.amazonaws.com:5432/d20nlhs27e80os
         </property>
         <property name="connection.username">nbvsdayccarflw</property>
         <property name="connection.password">1ac9b9b6d95dd4c1c8dcc2e55853f2346962bbdcd078b402509a64469847faeb</property>
@@ -28,10 +28,10 @@
         <property name="hibernate.dbcp.minIdle">5</property>
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
         
-        <mapping class="com.ipn.mx.modelo.entidades.Usuario"/>
-        <mapping class="com.ipn.mx.modelo.entidades.Municipio"/>
-        <mapping class="com.ipn.mx.modelo.entidades.Estado"/>
-        <mapping class="com.ipn.mx.modelo.entidades.Transacciones"/>
+        <mapping class="com.ipn.mx.proyecto.modelo.entidades.Usuarios"/>
+        <mapping class="com.ipn.mx.proyecto.modelo.entidades.Municipios"/>
+        <mapping class="com.ipn.mx.proyecto.modelo.entidades.Estados"/>
+        <mapping class="com.ipn.mx.proyecto.modelo.entidades.Transacciones"/>
 
     </session-factory>
 </hibernate-configuration>

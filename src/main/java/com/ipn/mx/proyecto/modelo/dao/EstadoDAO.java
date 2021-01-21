@@ -7,12 +7,14 @@ package com.ipn.mx.proyecto.modelo.dao;
 
 import com.ipn.mx.proyecto.modelo.dto.EstadoDTO;
 import com.ipn.mx.proyecto.modelo.dto.MunicipioDTO;
-import com.ipn.mx.proyecto.modelo.entidades.Estado;
-import com.ipn.mx.proyecto.modelo.entidades.Municipio;
+import com.ipn.mx.proyecto.modelo.entidades.Estados;
+import com.ipn.mx.proyecto.modelo.entidades.Municipios;
 import com.ipn.mx.proyecto.utilerias.HibernateUtil;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -24,14 +26,14 @@ import org.hibernate.query.Query;
  */
 public class EstadoDAO {
 
-    private static final String M_P_STATE = "from municipios m where m.estado_id = :estado";
+    private static final String M_P_STATE = "from Municipios m where m.estado_id = :estado";
 
     public EstadoDTO read(EstadoDTO dto) throws SQLException {
         Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaccion = sesion.getTransaction();
         try {
             transaccion.begin();
-            dto.setEntidad(sesion.get(dto.getEntidad().getClass(), dto.getEntidad().getId()));
+            dto.setEntidad(sesion.get(dto.getEntidad().getClass(), dto.getEntidad().getEstado_id()));
             //sesion.delete(dto.getEntidad());
             transaccion.commit();
         } catch (HibernateException he) {
@@ -42,14 +44,14 @@ public class EstadoDAO {
         return dto;
     }
 
-    public List readAll() {
+    public List readAll() throws SQLException{
         Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaccion = sesion.getTransaction();
         List lista = new ArrayList();
         try {
             transaccion.begin();
-            Query q = sesion.createQuery("from Usuario u order by u.id");
-            for (Estado u : (List<Estado>) q.list()) {
+            Query q = sesion.createQuery("from Estado u order by u.id");
+            for (Estados u : (List<Estados>) q.list()) {
                 EstadoDTO dto = new EstadoDTO();
                 dto.setEntidad(u);
                 lista.add(dto);
@@ -63,15 +65,16 @@ public class EstadoDAO {
         return lista;
     }
 
-    public List readMunicipios(EstadoDTO estado) {
+    public List readMunicipios(EstadoDTO estado) throws SQLException{
         List lista = new ArrayList();
-        if (estado != null && estado.getEntidad().getId() != 0) {
+        if (estado != null && estado.getEntidad().getEstado_id() != 0) {
             Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
             Transaction transaccion = sesion.getTransaction();
             try {
                 transaccion.begin();
                 Query q = sesion.createQuery(M_P_STATE);
-                for (Municipio m : (List<Municipio>) q.list()) {
+                q.setParameter("estado", estado.getEntidad());
+                for (Municipios m : (List<Municipios>) q.list()) {
                     MunicipioDTO dto = new MunicipioDTO();
                     dto.setEntidad(m);
                     lista.add(dto);
@@ -84,5 +87,16 @@ public class EstadoDAO {
             }
         }
         return lista;
+    }
+    
+    public static void main(String[] args) {
+        try {
+            EstadoDAO dao = new EstadoDAO();
+            EstadoDTO dto = new EstadoDTO();
+            dto.getEntidad().setEstado_id(1);
+            System.out.println(dao.readMunicipios(dto));
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

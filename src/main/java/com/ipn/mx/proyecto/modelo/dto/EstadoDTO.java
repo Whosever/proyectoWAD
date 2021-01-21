@@ -5,7 +5,7 @@
  */
 package com.ipn.mx.proyecto.modelo.dto;
 
-import com.ipn.mx.proyecto.modelo.entidades.Estado;
+import com.ipn.mx.proyecto.modelo.entidades.Estados;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,10 +17,10 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class EstadoDTO implements Serializable{
-    Estado entidad;
+    Estados entidad;
 
     public EstadoDTO() {
-        entidad = new Estado();
+        entidad = new Estados();
     }
     
 }

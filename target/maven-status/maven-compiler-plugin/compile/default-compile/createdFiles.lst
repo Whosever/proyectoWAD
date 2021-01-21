@@ -1,0 +1,12 @@
+com\ipn\mx\proyecto\modelo\dao\UsuarioDAO.class
+com\ipn\mx\proyecto\modelo\dto\MunicipioDTO.class
+com\ipn\mx\proyecto\modelo\entidades\Usuarios.class
+com\ipn\mx\proyecto\modelo\entidades\Municipios.class
+com\ipn\mx\proyecto\modelo\dao\TransaccionesDAO.class
+com\ipn\mx\proyecto\modelo\dto\UsuarioDTO.class
+com\ipn\mx\proyecto\modelo\dao\EstadoDAO.class
+com\ipn\mx\proyecto\modelo\dto\EstadoDTO.class
+com\ipn\mx\proyecto\utilerias\HibernateUtil.class
+com\ipn\mx\proyecto\modelo\dto\TransaccionesDTO.class
+com\ipn\mx\proyecto\modelo\entidades\Transacciones.class
+com\ipn\mx\proyecto\modelo\entidades\Estados.class

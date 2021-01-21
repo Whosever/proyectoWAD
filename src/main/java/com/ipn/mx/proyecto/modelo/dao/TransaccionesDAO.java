@@ -68,7 +68,7 @@ public class TransaccionesDAO {
         Transaction transaccion = sesion.getTransaction();
         try {
             transaccion.begin();
-            dto.setEntidad(sesion.get(dto.getEntidad().getClass(), dto.getEntidad().getId()));
+            dto.setEntidad(sesion.get(dto.getEntidad().getClass(), dto.getEntidad().getTransaction_id()));
             //sesion.delete(dto.getEntidad());
             transaccion.commit();
         } catch (HibernateException he) {

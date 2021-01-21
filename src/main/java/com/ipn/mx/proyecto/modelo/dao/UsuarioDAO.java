@@ -6,7 +6,7 @@
 package com.ipn.mx.proyecto.modelo.dao;
 
 import com.ipn.mx.proyecto.modelo.dto.UsuarioDTO;
-import com.ipn.mx.proyecto.modelo.entidades.Usuario;
+import com.ipn.mx.proyecto.modelo.entidades.Usuarios;
 import com.ipn.mx.proyecto.utilerias.HibernateUtil;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class UsuarioDAO {
         Transaction transaccion = sesion.getTransaction();
         try {
             transaccion.begin();
-            dto.setEntidad(sesion.get(dto.getEntidad().getClass(), dto.getEntidad().getId()));
+            dto.setEntidad(sesion.get(dto.getEntidad().getClass(), dto.getEntidad().getMunicipio_id()));
             //sesion.delete(dto.getEntidad());
             transaccion.commit();
         } catch (HibernateException he) {
@@ -90,7 +90,7 @@ public class UsuarioDAO {
         try {
             transaccion.begin();
             Query q = sesion.createQuery("from Usuario u order by u.id");
-            for (Usuario u : (List<Usuario>) q.list()) {
+            for (Usuarios u : (List<Usuarios>) q.list()) {
                 UsuarioDTO dto = new UsuarioDTO();
                 dto.setEntidad(u);
                 lista.add(dto);
@@ -112,7 +112,7 @@ public class UsuarioDAO {
             transaccion.begin();
             Query q = sesion.createQuery(SQL_VALIDATE);
             q.setParameter("email", dto.getEntidad().getCorreo());
-            for (Usuario u : (List<Usuario>) q.list()) {
+            for (Usuarios u : (List<Usuarios>) q.list()) {
                 UsuarioDTO dtoAux = new UsuarioDTO();
                 dtoAux.setEntidad(u);
                 lista.add(dtoAux);
@@ -135,7 +135,7 @@ public class UsuarioDAO {
             Query q = sesion.createQuery(SQL_LOGIN);
             q.setParameter("email", dto.getEntidad().getCorreo());
             q.setParameter("clave", dto.getEntidad().getClave());
-            for (Usuario u : (List<Usuario>) q.list()) {
+            for (Usuarios u : (List<Usuarios>) q.list()) {
                 UsuarioDTO dtoAux = new UsuarioDTO();
                 dtoAux.setEntidad(u);
                 lista.add(dtoAux);
@@ -148,8 +148,8 @@ public class UsuarioDAO {
         }
         val = lista.size();
         if(val == 1){
-            Usuario u = (Usuario) lista.get(0);
-            return u.getId();
+            Usuarios u = (Usuarios) lista.get(0);
+            return u.getUsuario_id();
         }else{
             return 0;
         }
