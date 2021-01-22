@@ -10,3 +10,4 @@ com\ipn\mx\proyecto\utilerias\HibernateUtil.class
 com\ipn\mx\proyecto\modelo\dto\TransaccionesDTO.class
 com\ipn\mx\proyecto\modelo\entidades\Transacciones.class
 com\ipn\mx\proyecto\modelo\entidades\Estados.class
+com\ipn\mx\proyecto\utilerias\EnviarEmail.class

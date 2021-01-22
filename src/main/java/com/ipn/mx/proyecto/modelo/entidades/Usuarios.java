@@ -40,4 +40,5 @@ public class Usuarios implements Serializable{
     private Municipios municipio_id;
     private int coins;
     private int tipo;
+    private String image;
 }

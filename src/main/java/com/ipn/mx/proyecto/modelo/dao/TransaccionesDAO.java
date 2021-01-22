@@ -85,7 +85,7 @@ public class TransaccionesDAO {
         List lista = new ArrayList();
         try {
             transaccion.begin();
-            Query q = sesion.createQuery("from Usuario u order by u.id");
+            Query q = sesion.createQuery("from Transacciones u order by u.transaction_id");
             for (Transacciones t : (List<Transacciones>) q.list()) {
                 TransaccionesDTO dto = new TransaccionesDTO();
                 dto.setEntidad(t);

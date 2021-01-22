@@ -11,6 +11,8 @@ import com.ipn.mx.proyecto.utilerias.HibernateUtil;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -83,13 +85,13 @@ public class UsuarioDAO {
         return dto;
     }
 
-    public List readAll() {
+    public List readAll() throws SQLException {
         Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaccion = sesion.getTransaction();
         List lista = new ArrayList();
         try {
             transaccion.begin();
-            Query q = sesion.createQuery("from Usuario u order by u.id");
+            Query q = sesion.createQuery("from Usuarios u order by u.Usuario_id");
             for (Usuarios u : (List<Usuarios>) q.list()) {
                 UsuarioDTO dto = new UsuarioDTO();
                 dto.setEntidad(u);
@@ -154,5 +156,4 @@ public class UsuarioDAO {
             return 0;
         }
     }
-
 }

@@ -13,8 +13,6 @@ import com.ipn.mx.proyecto.utilerias.HibernateUtil;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -50,7 +48,7 @@ public class EstadoDAO {
         List lista = new ArrayList();
         try {
             transaccion.begin();
-            Query q = sesion.createQuery("from Estado u order by u.id");
+            Query q = sesion.createQuery("from Estados u order by u.estado_id");
             for (Estados u : (List<Estados>) q.list()) {
                 EstadoDTO dto = new EstadoDTO();
                 dto.setEntidad(u);
@@ -89,14 +87,4 @@ public class EstadoDAO {
         return lista;
     }
     
-    public static void main(String[] args) {
-        try {
-            EstadoDAO dao = new EstadoDAO();
-            EstadoDTO dto = new EstadoDTO();
-            dto.getEntidad().setEstado_id(1);
-            System.out.println(dao.readMunicipios(dto));
-        } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }
