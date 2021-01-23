@@ -13,11 +13,11 @@
         <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
             <header class="masthead mb-auto">
                 <div class="inner">
-                    <h3 class="masthead-brand">Practica 2</h3>
+                    <h3 class="masthead-brand">Proyecto</h3>
                     <h:form id="frmInicio">
                         <nav class="nav nav-masthead justify-content-center">
-                            <h:commandLink class="nav-link active" action="index?faceses-redirect=true"> Home </h:commandLink>
-                            <h:commandLink class="nav-link" action="#{UserBean.prepareLogin()}">Login</h:commandLink>
+                            <h:commandLink class="nav-link" action="/index?faceses-redirect=true"> Home </h:commandLink>
+                            <h:commandLink class="nav-link active" action="#{UserBean.prepareLogin()}">Login</h:commandLink>
                         </nav>
                     </h:form>
                 </div>
@@ -47,7 +47,7 @@
                             </h:inputSecret>
                             <h:message for="txtClave"/>
                         </h:panelGrid>
-                        <h:commandLink action="#{UserBean.login}" class="btn btn-lg btn-secondary">Login</h:commandLink>
+                        <h:commandLink action="#{UserBean.Login}" class="btn btn-lg btn-secondary">Login</h:commandLink>
                     </h:form> 
                     <h:form>
                         <h:commandLink action="#{UserBean.prepareAdd()}" class="btn btn-lg btn-primary">Nuevo usuario</h:commandLink>

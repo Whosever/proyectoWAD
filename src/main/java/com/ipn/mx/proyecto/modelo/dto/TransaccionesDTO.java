@@ -6,6 +6,7 @@
 package com.ipn.mx.proyecto.modelo.dto;
 
 import com.ipn.mx.proyecto.modelo.entidades.Transacciones;
+import com.ipn.mx.proyecto.modelo.entidades.Usuarios;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,8 @@ public class TransaccionesDTO implements Serializable{
 
     public TransaccionesDTO() {
         entidad = new Transacciones();
+        entidad.setOrigen(new Usuarios());
+        entidad.setDestino(new Usuarios());
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package com.ipn.mx.proyecto.modelo.dto;
 
+import com.ipn.mx.proyecto.modelo.entidades.Estados;
 import com.ipn.mx.proyecto.modelo.entidades.Municipios;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
@@ -21,6 +22,7 @@ public class MunicipioDTO implements Serializable{
 
     public MunicipioDTO() {
         entidad = new Municipios();
+        entidad.setEstado_id(new Estados());
     }
     
 }

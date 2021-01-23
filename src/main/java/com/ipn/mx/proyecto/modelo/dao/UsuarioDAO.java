@@ -74,7 +74,7 @@ public class UsuarioDAO {
         Transaction transaccion = sesion.getTransaction();
         try {
             transaccion.begin();
-            dto.setEntidad(sesion.get(dto.getEntidad().getClass(), dto.getEntidad().getMunicipio_id()));
+            dto.setEntidad(sesion.get(dto.getEntidad().getClass(), dto.getEntidad().getUsuario_id()));
             //sesion.delete(dto.getEntidad());
             transaccion.commit();
         } catch (HibernateException he) {
@@ -150,7 +150,7 @@ public class UsuarioDAO {
         }
         val = lista.size();
         if(val == 1){
-            Usuarios u = (Usuarios) lista.get(0);
+            Usuarios u = ((UsuarioDTO) lista.get(0)).getEntidad();
             return u.getUsuario_id();
         }else{
             return 0;

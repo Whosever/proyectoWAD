@@ -5,6 +5,7 @@
  */
 package com.ipn.mx.proyecto.modelo.dto;
 
+import com.ipn.mx.proyecto.modelo.entidades.Municipios;
 import com.ipn.mx.proyecto.modelo.entidades.Usuarios;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
@@ -21,6 +22,7 @@ public class UsuarioDTO implements Serializable{
 
     public UsuarioDTO() {
         entidad = new Usuarios();
+        entidad.setMunicipio_id(new Municipios());
     }
     
 }

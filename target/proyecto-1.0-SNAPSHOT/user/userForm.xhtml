@@ -15,8 +15,8 @@
                     <h3 class="masthead-brand">Proyecto</h3>
                     <h:form id="frmInicio">
                         <nav class="nav nav-masthead justify-content-center">
-                            <h:commandLink class="nav-link active" action="index?faceses-redirect=true"> Home </h:commandLink>
-                            <h:commandLink class="nav-link" action="#{UserBean.prepareLogin()}">Login</h:commandLink>
+                            <h:commandLink class="nav-link" action="/index?faceses-redirect=true"> Home </h:commandLink>
+                            <h:commandLink class="nav-link active" action="#{UserBean.prepareLogin()}">Login</h:commandLink>
                         </nav>
                     </h:form>
                 </div>
@@ -45,7 +45,7 @@
                                 <f:validateRequired/>
                             </h:inputText>
                             <h:message for="txtNombre"/>
-                            
+
                             <h:outputLabel value="Paterno"/>
                             <h:inputText id="txtPaterno"
                                          class="form-control"
@@ -55,7 +55,7 @@
                                 <f:validateRequired/>
                             </h:inputText>
                             <h:message for="txtPaterno"/>
-                            
+
                             <h:outputLabel value="Materno"/>
                             <h:inputText id="txtMaterno"
                                          class="form-control"
@@ -65,7 +65,7 @@
                                 <f:validateRequired/>
                             </h:inputText>
                             <h:message for="txtMaterno"/>
-                            
+
                             <h:outputLabel value="Email"/>
                             <h:inputText id="txtEmail"
                                          class="form-control"
@@ -78,18 +78,59 @@
 
                             <h:outputLabel value="Contraseña"/>
                             <h:inputSecret id="txtClave"
-                                         class="form-control"
-                                         required="true"
-                                         value = "#{UserBean.dto.entidad.clave}"
-                                         requiredMessage="La clave es obligatoria">
+                                           class="form-control"
+                                           required="true"
+                                           value = "#{UserBean.dto.entidad.clave}"
+                                           requiredMessage="La clave es obligatoria">
                                 <f:validateRequired/>
-                            </h:inputSecret>
+                            </h:inputSecret>                          
                             <h:message for="txtClave"/>
+
+                            <h:outputLabel value="Estado"/>
+                            <h:selectOneMenu id="txtEstado"
+                                             class="form-control"
+                                             required="true"
+                                             value = "#{EstadosMB.dto.entidad.estado_id}"
+                                             requiredMessage="El estado es obligatorio"
+                                             onchange = "submit()"
+                                             valueChangeListener = "#{EstadosMB.changeEstado}">
+                                <f:selectItems value="#{EstadosMB.listaEstados}" 
+                                               var="n"
+                                               itemValue="#{n.entidad.estado_id}"
+                                               itemLabel="#{n.entidad.nombre}"/>
+                                <f:validateRequired/>
+                            </h:selectOneMenu>               
+                            <h:message for="txtEstado"/>
+
+                            <h:outputLabel value="Municipio"/>
+                            <h:selectOneMenu id="txtMunicipio"
+                                             class="form-control"
+                                             required="true"
+                                             value = "#{UserBean.dto.entidad.municipio_id.municipio_id}"
+                                             requiredMessage="El municipio es obligatorio">
+                                <f:selectItems value="#{EstadosMB.getMunicipios(EstadosMB.dto)}" 
+                                               var="m"
+                                               itemValue="#{m.entidad.municipio_id}"
+                                               itemLabel="#{m.entidad.nombre}"/>
+                                <f:validateRequired/>
+                            </h:selectOneMenu>               
+                            <h:message for="txtMunicipio"/>
+                            
+                            <h:outputLabel value="Tipo de usuario"/>
+                            <h:selectOneMenu id="txtTipo"
+                                             class="form-control"
+                                             value = "#{UserBean.dto.entidad.tipo}">
+                                <f:selectItem itemValue="1" itemLabel="1:usuario comun"/>
+                                <f:selectItem itemValue="2" itemLabel="2:usuario admin"/>
+                                <f:validateRequired/>
+                            </h:selectOneMenu>
+                            <h:message for="txtTipo"/>
+
                         </h:panelGrid>
-                        <h:commandLink action="#{UserBean.add()}" class="btn btn-lg btn-secondary">Login</h:commandLink>
+                        <h:commandLink action="#{UserBean.add()}" class="btn btn-lg btn-success">Registrar</h:commandLink>
                     </h:form> 
                     <h:form>
-                        <h:commandLink action="user/userForm?faceses-redirect=true" class="btn btn-lg btn-primary">Nuevo usuario</h:commandLink>
+                        <h:commandLink action="#{UserBean.prepareLogin()}" class="btn btn-lg btn-danger">Cancel</h:commandLink>
                     </h:form>
                 </p>
             </main>

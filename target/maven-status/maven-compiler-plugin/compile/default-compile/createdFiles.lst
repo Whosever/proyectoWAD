@@ -1,6 +1,8 @@
+controlador\web\EstadosMB.class
 com\ipn\mx\proyecto\modelo\dao\UsuarioDAO.class
 com\ipn\mx\proyecto\modelo\dto\MunicipioDTO.class
 com\ipn\mx\proyecto\modelo\entidades\Usuarios.class
+controlador\web\UserBean.class
 com\ipn\mx\proyecto\modelo\entidades\Municipios.class
 com\ipn\mx\proyecto\modelo\dao\TransaccionesDAO.class
 com\ipn\mx\proyecto\modelo\dto\UsuarioDTO.class
@@ -11,3 +13,4 @@ com\ipn\mx\proyecto\modelo\dto\TransaccionesDTO.class
 com\ipn\mx\proyecto\modelo\entidades\Transacciones.class
 com\ipn\mx\proyecto\modelo\entidades\Estados.class
 com\ipn\mx\proyecto\utilerias\EnviarEmail.class
+controlador\web\BaseBean.class
