@@ -27,7 +27,7 @@
                     <h:form id="registrarUsuario">
                         <h:inputHidden id="accion" value="#{UserBean.accion}"/>
                         <h:panelGrid columns="3" class="form-group row">
-                            <h:outputLabel value="Clave Categoria"
+                            <h:outputLabel value="Clave Usuario"
                                            rendered="#{UserBean.modoActualizar}"/>
                             <h:inputText id="idUsuario"
                                          value = "#{UserBean.dto.entidad.usuario_id}"
@@ -127,7 +127,8 @@
                             <h:message for="txtTipo"/>
 
                         </h:panelGrid>
-                        <h:commandLink action="#{UserBean.add()}" class="btn btn-lg btn-success">Registrar</h:commandLink>
+                        <h:commandLink action="#{UserBean.add()}" class="btn btn-lg btn-success"  rendered="#{UserBean.modoCrear}">Registrar</h:commandLink>
+                        <h:commandLink action="#{UserBean.update()}" class="btn btn-lg btn-success"  rendered="#{UserBean.modoActualizar}">Actualizar</h:commandLink>
                     </h:form> 
                     <h:form>
                         <h:commandLink action="#{UserBean.prepareLogin()}" class="btn btn-lg btn-danger">Cancel</h:commandLink>

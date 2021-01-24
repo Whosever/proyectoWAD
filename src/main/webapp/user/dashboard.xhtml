@@ -24,12 +24,22 @@
                 </div>
             </header>
             <main role="main" class="inner cover">
+                <h:graphicImage  value = "#{Usuario.entidad.image}" alt="No image"/> 
+                <h:form id="selectImage" enctype="multipart/form-data">
+                    <h:inputFile value="#{UserBean.uploadedFile}">
+                        <f:ajax listener="#{UserBean.upload()}" />
+                    </h:inputFile>
+                    <h:commandLink action="#{UserBean.upload()}" class="btn btn-lg btn-success">Registrar</h:commandLink>
+                </h:form>
                 <h1 class="cover-heading">#{Usuario.entidad.nombre}'s Dashboard</h1>
                 <p class="lead">Nombre: #{Usuario.entidad.nombre} #{usuario.entidad.paterno} #{usuario.entidad.materno}</p>
                 <p class="lead">Correo: #{Usuario.entidad.correo}</p>
                 <p class="lead">Estado: #{Usuario.entidad.municipio_id.estado_id.nombre}</p>
                 <p class="lead">Municipio: #{Usuario.entidad.municipio_id.nombre}</p>
-                
+                <h:form id="frmEditar">
+                    <h:commandLink action="#{UserBean.prepareUpdate()}" class="btn btn-lg btn-secondary">Editar</h:commandLink>
+                </h:form>
+
             </main>
 
             <footer class="mastfoot mt-auto">
