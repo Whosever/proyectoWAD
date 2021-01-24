@@ -153,6 +153,7 @@ public class UserBean extends BaseBean implements Serializable {
 		ServletContext servletContext = (ServletContext) context.getExternalContext().getContext();
 		String path = servletContext.getRealPath("");
                 File uploads = new File(path+File.separator+"user"+File.separator+"image");
+                uploads.mkdirs();
                 output = new File(uploads, "U"+dto.getEntidad().getUsuario_id() + "."+extension);  
                 if(output.exists()){
                     output.delete();
@@ -161,6 +162,9 @@ public class UserBean extends BaseBean implements Serializable {
                 dto = (UsuarioDTO) session.getAttribute("Usuario");
                 dto.getEntidad().setImage(output.getAbsolutePath());
                 dao.update(dto);
+                
+                ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+                ec.redirect(ec.getRequestContextPath() + "/faces/user/dashboard.xhtml");
             } catch (IOException | SQLException ex) {
                 Logger.getLogger(UserBean.class.getName()).log(Level.SEVERE, null, ex);
             }
