@@ -17,6 +17,7 @@
                     <h:form id="frmInicio">
                         <nav class="nav nav-masthead justify-content-center">
                             <h:commandLink class="nav-link active" action="#{UserBean.prepareLogin()}"> Dashboard </h:commandLink>
+                            <h:commandLink class="nav-link" action="/user/ruleta">Ruleta</h:commandLink>
                             <h:commandLink class="nav-link" action="#{UserBean.logout}">Logout</h:commandLink>
                             <h4 class="nav-link">coins: #{Usuario.entidad.coins}</h4>
                         </nav>

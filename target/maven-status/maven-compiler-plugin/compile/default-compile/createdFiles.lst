@@ -1,5 +1,6 @@
 controlador\web\EstadosMB.class
 com\ipn\mx\proyecto\modelo\dao\UsuarioDAO.class
+com\ipn\mx\proyecto\utilerias\DBconnection.class
 com\ipn\mx\proyecto\modelo\dto\MunicipioDTO.class
 com\ipn\mx\proyecto\modelo\entidades\Usuarios.class
 com\ipn\mx\proyecto\utilerias\DynamicImageServlet.class
@@ -12,6 +13,7 @@ com\ipn\mx\proyecto\modelo\dto\EstadoDTO.class
 com\ipn\mx\proyecto\utilerias\HibernateUtil.class
 com\ipn\mx\proyecto\modelo\dto\TransaccionesDTO.class
 com\ipn\mx\proyecto\modelo\entidades\Transacciones.class
+controlador\web\TransacctionBean.class
 com\ipn\mx\proyecto\modelo\entidades\Estados.class
 com\ipn\mx\proyecto\utilerias\EnviarEmail.class
 controlador\web\BaseBean.class

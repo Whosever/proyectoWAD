@@ -11,19 +11,15 @@ import com.ipn.mx.proyecto.modelo.dto.MunicipioDTO;
 import com.ipn.mx.proyecto.modelo.dto.UsuarioDTO;
 import com.ipn.mx.proyecto.utilerias.EnviarEmail;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
@@ -32,7 +28,6 @@ import javax.faces.event.ActionEvent;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.FilenameUtils;
 
 /**

@@ -6,6 +6,7 @@
 package com.ipn.mx.proyecto.modelo.dao;
 
 import com.ipn.mx.proyecto.modelo.dto.TransaccionesDTO;
+import com.ipn.mx.proyecto.modelo.dto.UsuarioDTO;
 import com.ipn.mx.proyecto.modelo.entidades.Transacciones;
 import com.ipn.mx.proyecto.utilerias.HibernateUtil;
 import java.sql.SQLException;
@@ -87,6 +88,31 @@ public class TransaccionesDAO {
             transaccion.begin();
             Query q = sesion.createQuery("from Transacciones u order by u.transaction_id");
             for (Transacciones t : (List<Transacciones>) q.list()) {
+                TransaccionesDTO dto = new TransaccionesDTO();
+                dto.setEntidad(t);
+                lista.add(dto);
+            }
+            transaccion.commit();
+        } catch (HibernateException he) {
+            if (transaccion != null && transaccion.isActive()) {
+                transaccion.rollback();
+            }
+        }
+        return lista;
+    }
+    
+    public List readUser(UsuarioDTO filter) {
+        Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaccion = sesion.getTransaction();
+        List lista = new ArrayList();
+        try {
+            transaccion.begin();
+            Query q = sesion.createQuery("from Transacciones u where u.origen = :origen or u.destino = :destino");
+            q.setParameter("origen", filter.getEntidad());
+            q.setParameter("destino", filter.getEntidad());
+            List l = q.list();
+            for (int i = 0; i<l.size();i++) {
+                Transacciones t = (Transacciones) l.get(i);
                 TransaccionesDTO dto = new TransaccionesDTO();
                 dto.setEntidad(t);
                 lista.add(dto);
